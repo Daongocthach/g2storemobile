@@ -3,7 +3,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useColorScheme } from 'nativewind'
 
 const BottomNavigation = ({ state, descriptors, navigation }) => {
-  const { colorScheme, toggleColorScheme } = useColorScheme()
+  const { colorScheme } = useColorScheme()
   return (
     <View style={{ flexDirection: 'row', backgroundColor: colorScheme == 'dark' ? 'black' : 'white', paddingVertical: 20 }}>
       {state.routes.map((route, index) => {

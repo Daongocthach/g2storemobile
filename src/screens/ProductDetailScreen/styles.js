@@ -4,12 +4,12 @@ const getStyles = (colorScheme) => {
   return StyleSheet.create({
     container: {
       flex: 1,
-      flexDirection:'column',
-      gap:3,
+      flexDirection: 'column',
+      gap: 3,
       backgroundColor: colorScheme == 'dark' ? 'black' : '#EEEEEE'
     },
     header: {
-      flex: 1,
+      flex: 2,
       backgroundColor: colorScheme == 'dark' ? 'black' : '#EEEEEE'
     },
     title: {
@@ -18,7 +18,7 @@ const getStyles = (colorScheme) => {
       fontWeight: 'bold'
     },
     body: {
-      flex: 5,
+      flex: 7,
       flexDirection: 'column',
       display: 'flex',
       paddingTop: 10,
@@ -26,9 +26,11 @@ const getStyles = (colorScheme) => {
     },
     footer: {
       flex: 0.8,
-      backgroundColor: colorScheme == 'dark' ? 'black' : 'white',
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingHorizontal: 5,
+      backgroundColor: colorScheme == 'dark' ? 'black' : 'white'
     },
     flexView: {
       flexDirection: 'row',
@@ -48,7 +50,7 @@ const getStyles = (colorScheme) => {
     text: {
       textAlign: 'center',
       fontWeight: 'bold',
-      fontSize: 20
+      fontSize: 14
     },
     input: {
       width: '85%',
@@ -66,10 +68,10 @@ const getStyles = (colorScheme) => {
       fontWeight: 'bold'
     },
     buttonSubmit: {
-      backgroundColor: colorScheme == 'dark' ? '#696969' : '#4F4F4F',
-      borderRadius: 10,
-      height: 50,
-      justifyContent: 'center'
+      justifyContent: 'center',
+      width: 100,
+      height: 35,
+      borderRadius: 10
     }
   })
 }
