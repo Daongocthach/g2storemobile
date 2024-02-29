@@ -7,6 +7,7 @@ import TabScreens from './src/components/BottomTab/TabScreens'
 import Theme from './theme'
 import Login from './src/screens/Auth/Login/Login.jsx'
 import Register from './src/screens/Auth/Register/Register.jsx'
+import ForgotPassword from './src/screens/Auth/ForgotPassword/ForgotPassword.jsx'
 import ProductsScreen from './src/screens/ProductsScreen/ProductsScreen.jsx'
 import ProductDetailScreen from './src/screens/ProductDetailScreen/ProductDetailScreen.jsx'
 
@@ -31,6 +32,11 @@ export default function App() {
             <Stack.Screen
               name="Register"
               component={Register}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ForgotPassword"
+              component={ForgotPassword}
               options={{ headerShown: false }}
             />
             <Stack.Screen

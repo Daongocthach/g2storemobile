@@ -10,8 +10,8 @@ function TabScreens() {
     return (
         <Tab.Navigator tabBar={(props) => <BottomNavigation {...props} />}>
             <Tab.Screen name="Trang chủ" component={Home} options={{ headerShown: false }} />
-            <Tab.Screen name="Hỏi đáp" component={Notification} options={{ headerShown: false }} />
-            <Tab.Screen name="Thông báo" component={Chat} options={{ headerShown: false }} />
+            <Tab.Screen name="Hỏi đáp" component={Chat} options={{ headerShown: false }} />
+            <Tab.Screen name="Thông báo" component={Notification} options={{ headerShown: false }} />
             <Tab.Screen name="Tài khoản" component={Setting} options={{ headerShown: false }} />
         </Tab.Navigator>
     )

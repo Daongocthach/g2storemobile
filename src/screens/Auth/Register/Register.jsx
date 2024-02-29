@@ -49,36 +49,33 @@ function Register() {
   }
   return (
     <View style={styles.container}>
-      <View style={styles.header} >
-        <Icon name='keyboard-arrow-left' size={40} style={styles.icon} onPress={() => { navigation.navigate('Cài đặt') }} />
-        <Text style={styles.title}>Đăng ký</Text>
-      </View>
+      <View style={{ height: 50 }}></View>
+      <Icon name='chevron-left' size={40} style={{ marginLeft: 20 }} />
       <View style={styles.body}>
-        <View style={{ justifyContent: 'center', height: '200', alignItems: 'center' }}>
-          <Icon name='person-add' size={150} color={'orange'} />
-        </View>
+        <Text style={styles.title}>Đăng ký</Text>
         {loading && <View style={{ alignItems: 'center' }}>
           <Progress.Circle size={80} indeterminate={true} borderWidth={3} />
         </View>}
-        <View style={{ ...styles.flexView, marginHorizontal: 10 }}>
-          <Text style={styles.textTitle}>Email: </Text>
-          <TextInput style={styles.input} placeholder='Nhập email ...' placeholderTextColor={'gray'} onChangeText={setEmail} value={email} />
+        <View style={{ ...styles.flexView, marginHorizontal: 20, marginTop: 40 }}>
+          <TextInput style={styles.input} placeholder='Nhập email' placeholderTextColor={'#BBBBBB'} onChangeText={setEmail} value={email} />
         </View>
-        <View style={{ ...styles.flexView, marginHorizontal: 10 }}>
-          <Text style={styles.textTitle}>Mật khẩu: </Text>
-          <TextInput style={styles.input} secureTextEntry={true} placeholder='Nhập mật khẩu ...' placeholderTextColor={'gray'} onChangeText={setPassword} value={password} />
+        <View style={{ ...styles.flexView, marginHorizontal: 20 }}>
+          <TextInput style={styles.input} placeholder='Nhập họ và tên' placeholderTextColor={'#BBBBBB'} onChangeText={setEmail} value={email} />
         </View>
-        <View style={{ ...styles.flexView, marginHorizontal: 10 }}>
-          <Text style={styles.textTitle}>Xác nhận: </Text>
-          <TextInput style={styles.input} secureTextEntry={true} placeholder='Xác nhận mật khẩu ...' placeholderTextColor={'gray'} onChangeText={setRePassword} value={rePassword} />
+        <View style={{ ...styles.flexView, marginHorizontal: 20 }}>
+          <TextInput style={styles.input} placeholder='Nhập số điện thoại' placeholderTextColor={'#BBBBBB'} onChangeText={setEmail} value={email} />
+        </View>
+        <View style={{ ...styles.flexView, marginHorizontal: 20 }}>
+          <TextInput style={styles.input} secureTextEntry={true} placeholder='Nhập mật khẩu' placeholderTextColor={'#BBBBBB'} onChangeText={setPassword} value={password} />
+        </View>
+        <View style={{ ...styles.flexView, marginHorizontal: 20 }}>
+          <TextInput style={styles.input} secureTextEntry={true} placeholder='Xác nhận mật khẩu' placeholderTextColor={'#BBBBBB'} onChangeText={setPassword} value={password} />
         </View>
         <TouchableOpacity style={styles.buttonSubmit} onPress={handleRegister}>
-          <Icon name='login' size={30} color={'white'} />
-          <Text style={{ ...styles.text, color: 'white' }}>Đăng Ký</Text>
+          <Text style={{ ...styles.text, color: 'white' }}>Tạo tài khoản</Text>
         </TouchableOpacity>
-        <View style={{ ...styles.flexView, marginHorizontal: 10 }}>
-          <Text style={{ ...styles.textTitle, fontSize: 16 }} >Bạn đã có tài khoản ?</Text>
-          <Text style={{ ...styles.textTitle, textAlign: 'right' }} onPress={() => { navigation.navigate('Login') }}>Đăng nhập ?</Text>
+        <View style={{ marginHorizontal: 20 }}>
+          <Text style={{ ...styles.textTitle, textAlign: 'right' }} onPress={() => { navigation.navigate('Login') }}>Bạn đã có tài khoản ? Đăng nhập ?</Text>
         </View>
       </View>
     </View >

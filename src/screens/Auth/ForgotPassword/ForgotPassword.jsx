@@ -18,7 +18,7 @@ import { listIncomes } from '../../../redux/actions/incomes'
 import { listCategoriesIncome } from '../../../redux/actions/categoriesIncome'
 import { listCategoriesExpense } from '../../../redux/actions/categoriesExpense'
 
-function Login() {
+function ForgotPassword() {
   const dispatch = useDispatch()
   const navigation = useNavigation()
   const { colorScheme } = useColorScheme()
@@ -51,29 +51,40 @@ function Login() {
       }
     }
   }
+  const handleResetPassword = async () => {
+    if (email == '') {
+      showAlertOk('Điền thông tin Email để nhận mật khẩu mới', 'Bấm Ok để tiếp tục')
+    } else {
+      setLoading(true)
+      try {
+        await sendPasswordResetEmail(auth, email)
+        showAlertOk('Gửi thành công', 'Email đặt lại password đã được gửi đến mail của bạn. Vui lòng kiểm tra hộp thư.')
+      } catch (error) {
+        console.error('Error sending password reset email:', error.message)
+        showAlertOk('Gửi thất bại', 'Bấm Ok để tiếp tục.')
+      }
+      finally {
+        setLoading(false)
+      }
+    }
+  }
   return (
     <View style={styles.container}>
       <View style={{ height: 50 }}></View>
       <Icon name='chevron-left' size={40} style={{ marginLeft: 20 }} />
       <View style={styles.body}>
-        <Text style={styles.title}>Đăng nhập</Text>
+        <Text style={styles.title}>Quên mật khẩu</Text>
         {loading && <View style={{ alignItems: 'center' }}>
           <Progress.Circle size={80} indeterminate={true} borderWidth={3} />
         </View>}
         <View style={{ ...styles.flexView, marginHorizontal: 20, marginTop: 40 }}>
           <TextInput style={styles.input} placeholder='Nhập email' placeholderTextColor={'#BBBBBB'} onChangeText={setEmail} value={email} />
         </View>
-        <View style={{ ...styles.flexView, marginHorizontal: 20 }}>
-          <TextInput style={styles.input} secureTextEntry={true} placeholder='Nhập mật khẩu' placeholderTextColor={'#BBBBBB'} onChangeText={setPassword} value={password} />
-        </View>
         <TouchableOpacity style={styles.buttonSubmit} onPress={handleLogin}>
-          <Text style={{ ...styles.text, color: 'white' }}>Đăng nhập</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonSubmit} onPress={handleLogin}>
-          <Text style={{ ...styles.text, color: 'white' }}>Hoặc đăng nhập với tài khoản Google</Text>
+          <Text style={{ ...styles.text, color: 'white' }}>Nhận OTP qua Mail</Text>
         </TouchableOpacity>
         <View style={{ ...styles.flexView, marginHorizontal: 20 }}>
-          <Text style={styles.textTitle} onPress={() => { navigation.navigate('ForgotPassword') }}>Quên mật khẩu ?</Text>
+          <Text style={styles.textTitle} onPress={handleResetPassword}>Quên mật khẩu ?</Text>
           <Text style={{ ...styles.textTitle, textAlign: 'right' }} onPress={() => { navigation.navigate('Register') }}>Đăng ký ?</Text>
         </View>
       </View>
@@ -81,4 +92,4 @@ function Login() {
   )
 }
 
-export default Login
+export default ForgotPassword
