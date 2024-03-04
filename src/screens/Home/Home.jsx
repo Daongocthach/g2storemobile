@@ -1,4 +1,4 @@
-import { Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { Text, View, Dimensions, TouchableOpacity, ScrollView } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -10,6 +10,9 @@ import ProductHome from '../../components/Product/ProductHomeNew'
 import { mockData } from '../../apis/mockdata'
 import Voucher from './Voucher/Voucher'
 import ProductHomeSale from '../../components/Product/ProductHomeSale'
+import Header from '../../components/Header/Header'
+
+const { width, height } = Dimensions.get('window')
 
 const Home = () => {
   const navigation = useNavigation()
@@ -18,22 +21,9 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-        <View style={{ height: 50, backgroundColor: '#EEEEEE' }}></View>
-        <View style={{ height: 50, backgroundColor: '#EEEEEE', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20 }}>
-          <Icon name='menu' size={30} style={{ marginLeft: '10px', flex: 1 }} />
-          <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: 'white', flex: 5, height: '90%', paddingLeft: 10, borderRadius: 30, gap: 5, borderColor: '#828282', borderWidth: 1 }}>
-            <Icon1 name='search' size={25} style={{ color: 'gray' }} />
-            <TextInput style={styles.input} className="text-black" placeholder='Search...' />
-          </View>
-          <View style={{ flex: 1, paddingLeft: 5 }}>
-            <Icon name='cart' size={30} />
-          </View>
-        </View>
-        <View style={{ height: 50, paddingLeft: 20, backgroundColor: '#EEEEEE' }}>
-          <Text className='text-xl font-bold' >G2 Store Xin Chào, Thach.</Text>
-        </View>
+        <Header/>
         <ScrollView>
-          <View style={{ height: 200, backgroundColor: 'white', paddingLeft: 20 }}>
+          <View style={{ height: height/4, backgroundColor: 'white', paddingLeft: 20 }}>
             <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingRight: 20 }}>
               <Text className='text-xl font-bold' >Sản phẩm mới</Text>
               <TouchableOpacity className='flex-row items-center' onPress={() => { navigation.navigate('ProductsScreen') }}>
@@ -50,7 +40,7 @@ const Home = () => {
               </View>
             </ScrollView>
           </View>
-          <View style={{ height: 130, backgroundColor: 'white', paddingLeft: 20 }}>
+          <View style={{ height: height/5, backgroundColor: 'white', paddingLeft: 20 }}>
             <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingRight: 20 }}>
               <Text className='text-xl font-bold' >Trạm voucher</Text>
               <TouchableOpacity className='flex-row items-center'>
@@ -65,7 +55,7 @@ const Home = () => {
               }
             </View>
           </View>
-          <View style={{ flex: 3, backgroundColor: '#EEEEEE', paddingLeft: 20 }}>
+          <View style={{ flex: 3, backgroundColor: '#EEEEEE', paddingLeft: 20, paddingBottom: 3 }}>
             <Text className='text-xl font-bold' >Giảm giá</Text>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
               {mockData?.products.map((product, index) => (

@@ -5,18 +5,11 @@ import { useColorScheme } from 'nativewind'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Progress from 'react-native-progress'
-import { set, ref, onValue } from 'firebase/database'
 import getStyles from './styles'
 import showAlertOk from '../../../components/Alert/AlertOk'
 import { FIREBASE_AUTH } from '../../../../firebase'
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth'
 import { login } from '../../../redux/actions/auth'
-import { FIREBASE_DB } from '../../../../firebase'
-import { listBottles } from '../../../redux/actions/bottles'
-import { listExpenses } from '../../../redux/actions/expenses'
-import { listIncomes } from '../../../redux/actions/incomes'
-import { listCategoriesIncome } from '../../../redux/actions/categoriesIncome'
-import { listCategoriesExpense } from '../../../redux/actions/categoriesExpense'
 
 function Login() {
   const dispatch = useDispatch()

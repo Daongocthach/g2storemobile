@@ -10,10 +10,13 @@ import Register from './src/screens/Auth/Register/Register.jsx'
 import ForgotPassword from './src/screens/Auth/ForgotPassword/ForgotPassword.jsx'
 import ProductsScreen from './src/screens/ProductsScreen/ProductsScreen.jsx'
 import ProductDetailScreen from './src/screens/ProductDetailScreen/ProductDetailScreen.jsx'
+import EditProfile from './src/screens/Profile/EditProfile/EditProfile.jsx'
+import EditAddress from './src/screens/Profile/EditAddress/EditAddress.jsx'
+import EditBank from './src/screens/Profile/EditBank/EditBank.jsx'
+import EditEWallet from './src/screens/Profile/EditEWallet/EditEWallet.jsx'
 
 const Stack = createNativeStackNavigator()
 export default function App() {
-
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -49,10 +52,29 @@ export default function App() {
               component={ProductDetailScreen}
               options={{ headerShown: false }}
             />
+            <Stack.Screen
+              name="EditProfile"
+              component={EditProfile}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="EditAddress"
+              component={EditAddress}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="EditBank"
+              component={EditBank}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="EditEWallet"
+              component={EditEWallet}
+              options={{ headerShown: false }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </PersistGate>
     </Provider>
   )
-
 }

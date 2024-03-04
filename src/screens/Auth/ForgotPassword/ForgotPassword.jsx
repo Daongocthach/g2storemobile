@@ -5,18 +5,13 @@ import { useColorScheme } from 'nativewind'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Progress from 'react-native-progress'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import { set, ref, onValue } from 'firebase/database'
 import getStyles from './styles'
 import showAlertOk from '../../../components/Alert/AlertOk'
 import { FIREBASE_AUTH } from '../../../../firebase'
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth'
 import { login } from '../../../redux/actions/auth'
-import { FIREBASE_DB } from '../../../../firebase'
-import { listBottles } from '../../../redux/actions/bottles'
-import { listExpenses } from '../../../redux/actions/expenses'
-import { listIncomes } from '../../../redux/actions/incomes'
-import { listCategoriesIncome } from '../../../redux/actions/categoriesIncome'
-import { listCategoriesExpense } from '../../../redux/actions/categoriesExpense'
 
 function ForgotPassword() {
   const dispatch = useDispatch()
@@ -69,11 +64,9 @@ function ForgotPassword() {
     }
   }
   return (
-    <View style={styles.container}>
-      <View style={{ height: 50 }}></View>
-      <Icon name='chevron-left' size={40} style={{ marginLeft: 20 }} />
+    <SafeAreaView style={styles.container}>
       <View style={styles.body}>
-        <Text style={styles.title}>Quên mật khẩu</Text>
+        <Text style={styles.title}>Đổi mật khẩu</Text>
         {loading && <View style={{ alignItems: 'center' }}>
           <Progress.Circle size={80} indeterminate={true} borderWidth={3} />
         </View>}
@@ -83,12 +76,8 @@ function ForgotPassword() {
         <TouchableOpacity style={styles.buttonSubmit} onPress={handleLogin}>
           <Text style={{ ...styles.text, color: 'white' }}>Nhận OTP qua Mail</Text>
         </TouchableOpacity>
-        <View style={{ ...styles.flexView, marginHorizontal: 20 }}>
-          <Text style={styles.textTitle} onPress={handleResetPassword}>Quên mật khẩu ?</Text>
-          <Text style={{ ...styles.textTitle, textAlign: 'right' }} onPress={() => { navigation.navigate('Register') }}>Đăng ký ?</Text>
-        </View>
       </View>
-    </View >
+    </SafeAreaView >
   )
 }
 

@@ -1,4 +1,4 @@
-import { Text, View, TextInput, useWindowDimensions, ScrollView, TouchableOpacity, Image } from 'react-native'
+import { Text, View, Dimensions, TextInput, useWindowDimensions, ScrollView, TouchableOpacity, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icon1 from 'react-native-vector-icons/FontAwesome'
@@ -9,14 +9,19 @@ import getStyles from './styles'
 import ProductDetail from '../../components/Product/ProductDetail'
 import Details from './Details/Details'
 import Review from './Review/Review'
+import Header from '../../components/Header/Header'
+
+const { width, height } = Dimensions.get('window')
 
 const ProductDetailScreen = ({ route }) => {
     const navigation = useNavigation()
     const { colorScheme } = useColorScheme()
     const styles = getStyles(colorScheme)
     let product
+    let heightReviews = 0
     if (route.params.product) {
         product = route.params.product
+        heightReviews = product?.reviews?.length*160
     }
     const layout = useWindowDimensions()
     const [index, setIndex] = useState(0)
@@ -47,22 +52,12 @@ const ProductDetailScreen = ({ route }) => {
     return (
         <View style={styles.container}>
             <View style={styles.body}>
-                <View style={{ height: 50, backgroundColor: '#EEEEEE' }}></View>
-                <View style={{ height: 50, backgroundColor: '#EEEEEE', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20 }}>
-                    <Icon name='chevron-left' size={30} style={{ marginLeft: '10px', flex: 1 }} />
-                    <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: 'white', flex: 5, height: '90%', paddingLeft: 10, borderRadius: 30, gap: 5, borderColor: '#828282', borderWidth: 1 }}>
-                        <Icon1 name='search' size={25} style={{ color: 'gray' }} />
-                        <TextInput style={styles.input} className="text-black" placeholder='Search...' />
-                    </View>
-                    <View style={{ flex: 1, paddingLeft: 5 }}>
-                        <Icon name='cart' size={30} />
-                    </View>
-                </View>
+                <Header />
                 <ScrollView>
-                    <View style={{ flexDirection: 'column', alignItems: 'center', height: 400, backgroundColor: 'blue' }}>
+                    <View style={{ flexDirection: 'column', alignItems: 'center', height: height / 1.9, backgroundColor: 'blue' }}>
                         <ProductDetail product={product} />
                     </View>
-                    <View style={{ height: 1000, width: '100%' }}>
+                    <View style={{ width: '100%', height: heightReviews}}>
                         <TabView
                             navigationState={{ index, routes }}
                             renderScene={renderScene}
